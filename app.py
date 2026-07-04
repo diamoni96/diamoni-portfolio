@@ -9,6 +9,7 @@ PROFILE = {
     "email": "diamoni7096@gmail.com",
     "linkedin": "https://linkedin.com/in/dia-moni",
     "github": "https://github.com/diamoni96",
+    "photo": None,
     "resume_file": "Dia_Moni_CV.txt",
     "summary": (
         "Aspiring AI/ML Engineer, Python Developer, and CSE student focused on "
@@ -18,9 +19,28 @@ PROFILE = {
     ),
 }
 
+SOCIAL_LINKS = [
+    {
+        "label": "Email",
+        "display": PROFILE["email"],
+        "url": f"mailto:{PROFILE['email']}",
+    },
+    {
+        "label": "LinkedIn",
+        "display": "linkedin.com/in/dia-moni",
+        "url": PROFILE["linkedin"],
+    },
+    {
+        "label": "GitHub",
+        "display": "github.com/diamoni96",
+        "url": PROFILE["github"],
+    },
+]
+
 EDUCATION = [
     {
         "institution": "Southeast University",
+        "url": None,
         "period": "11/2023 - Present",
         "location": "Dhaka, Bangladesh",
         "description": (
@@ -98,6 +118,7 @@ PROJECTS = [
     {
         "title": "QueueStorm - Ticket Classification API",
         "type": "Backend / AI-adjacent API",
+        "url": None,
         "description": (
             "Python-based ticket classification and complaint investigation API "
             "designed for digital finance support operations."
@@ -113,6 +134,7 @@ PROJECTS = [
     {
         "title": "Student Management System",
         "type": "C++ Systems Project",
+        "url": None,
         "description": (
             "Console-based student management system with file handling, "
             "persistent storage, and structured record operations."
@@ -128,6 +150,7 @@ PROJECTS = [
     {
         "title": "University Complaint Analyzer",
         "type": "Analysis Project",
+        "url": None,
         "description": (
             "Complaint analysis project focused on understanding university-related "
             "feedback and organizing issues for clearer review."
@@ -165,9 +188,18 @@ ACHIEVEMENTS = [
 ]
 
 CERTIFICATES = [
-    "Structuring Machine Learning Projects",
-    "Maximize Productivity With AI Tools",
-    "C)PTE: Certified Penetration Testing Engineer",
+    {
+        "title": "Structuring Machine Learning Projects",
+        "url": None,
+    },
+    {
+        "title": "Maximize Productivity With AI Tools",
+        "url": None,
+    },
+    {
+        "title": "C)PTE: Certified Penetration Testing Engineer",
+        "url": None,
+    },
 ]
 
 NAV_ITEMS = [
@@ -186,6 +218,7 @@ def index():
     return render_template(
         "index.html",
         profile=PROFILE,
+        social_links=SOCIAL_LINKS,
         education=EDUCATION,
         skill_groups=SKILL_GROUPS,
         projects=PROJECTS,
