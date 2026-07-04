@@ -16,7 +16,13 @@
             </div>
         </div>
         <aside class="hero-card glass-card" aria-label="Portfolio highlights">
-            <img src="{{ url_for('static', filename='images/dia-moni-mark.svg') }}" alt="" class="hero-mark">
+            {% if profile.photo %}
+                <div class="profile-frame">
+                    <img src="{{ url_for('static', filename=profile.photo) }}" alt="{{ profile.name }} profile photo" class="profile-photo" data-profile-photo>
+                </div>
+            {% else %}
+                <img src="{{ url_for('static', filename='images/dia-moni-mark.svg') }}" alt="" class="hero-mark">
+            {% endif %}
             <p class="card-kicker">Focus Areas</p>
             <div class="focus-list">
                 <span>AI/ML Fundamentals</span>
@@ -70,7 +76,13 @@
                 <article class="timeline-card glass-card">
                     <div>
                         <p class="card-kicker">{{ item.period }}</p>
-                        <h3>{{ item.institution }}</h3>
+                        <h3>
+                            {% if item.url %}
+                                <a class="text-link" href="{{ item.url }}" target="_blank" rel="noopener" data-university-link>{{ item.institution }}</a>
+                            {% else %}
+                                {{ item.institution }}
+                            {% endif %}
+                        </h3>
                         <p>{{ item.location }}</p>
                     </div>
                     <p>{{ item.description }}</p>
@@ -128,6 +140,9 @@
                             <span>{{ tech }}</span>
                         {% endfor %}
                     </div>
+                    {% if project.url %}
+                        <a class="button button-secondary project-link" href="{{ project.url }}" target="_blank" rel="noopener">View Project</a>
+                    {% endif %}
                 </article>
             {% endfor %}
         </div>
@@ -181,7 +196,10 @@
             {% for certificate in certificates %}
                 <article class="certificate-card glass-card">
                     <span>Certificate</span>
-                    <h3>{{ certificate }}</h3>
+                    <h3>{{ certificate.title }}</h3>
+                    {% if certificate.url %}
+                        <a class="button button-secondary certificate-link" href="{{ certificate.url }}" target="_blank" rel="noopener">View Certificate</a>
+                    {% endif %}
                 </article>
             {% endfor %}
         </div>
@@ -199,9 +217,9 @@
             </p>
         </div>
         <div class="contact-card glass-panel">
-            <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
-            <a href="{{ profile.linkedin }}" target="_blank" rel="noopener">linkedin.com/in/dia-moni</a>
-            <a href="{{ profile.github }}" target="_blank" rel="noopener">github.com/diamoni96</a>
+            {% for link in social_links %}
+                <a href="{{ link.url }}" {% if link.url.startswith('https://') %}target="_blank" rel="noopener"{% endif %} data-contact-link="{{ link.label|lower }}">{{ link.display }}</a>
+            {% endfor %}
             <a class="button button-primary full-button" href="{{ url_for('download_cv') }}">Download CV</a>
         </div>
     </div>
