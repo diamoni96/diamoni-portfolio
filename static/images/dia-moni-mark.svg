@@ -1,0 +1,15 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Dia Moni brand mark</title>
+  <desc id="desc">A modern monogram mark for Dia Moni.</desc>
+  <rect x="6" y="6" width="148" height="148" rx="38" fill="url(#paint0_linear)"/>
+  <rect x="18" y="18" width="124" height="124" rx="30" fill="white" fill-opacity="0.24"/>
+  <path d="M43 108V52H63C80.2 52 92 63.2 92 80C92 96.8 80.2 108 63 108H43ZM57.2 95.3H62.4C71.6 95.3 77.6 89.4 77.6 80C77.6 70.6 71.6 64.7 62.4 64.7H57.2V95.3Z" fill="white"/>
+  <path d="M94 108V52H108.8L123.6 76.2L138.2 52H153V108H139.4V73.8L124.3 98.5H122.7L107.6 74V108H94Z" fill="white" fill-opacity="0.94"/>
+  <defs>
+    <linearGradient id="paint0_linear" x1="18" y1="20" x2="143" y2="148" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B4F4A"/>
+      <stop offset="0.56" stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#D85F51"/>
+    </linearGradient>
+  </defs>
+</svg>
