@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section" id="home">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow">CSE Student + Builder</p>
+            <h1>{{ profile.name }}</h1>
+            <p class="hero-role">{{ profile.role }}</p>
+            <p class="hero-intro">{{ profile.summary }}</p>
+            <div class="hero-actions" aria-label="Primary actions">
+                <a class="button button-primary" href="{{ url_for('resume') }}" target="_blank" rel="noopener">View Resume</a>
+                <a class="button button-secondary" href="#projects">Projects</a>
+                <a class="button button-ghost" href="#contact">Contact Me</a>
+            </div>
+        </div>
+        <aside class="hero-card glass-card" aria-label="Portfolio highlights">
+            <img src="{{ url_for('static', filename='images/dia-moni-mark.svg') }}" alt="" class="hero-mark">
+            <p class="card-kicker">Focus Areas</p>
+            <div class="focus-list">
+                <span>AI/ML Fundamentals</span>
+                <span>Python Backend APIs</span>
+                <span>Automation Workflows</span>
+                <span>Data-Driven Problem Solving</span>
+            </div>
+            <div class="hero-stat-row">
+                <div>
+                    <strong>3</strong>
+                    <span>Featured projects</span>
+                </div>
+                <div>
+                    <strong>2026</strong>
+                    <span>Hackathon finalist</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="container split-section">
+        <div>
+            <p class="section-label">About Me</p>
+            <h2>Building useful intelligent systems with a practical engineering mindset.</h2>
+        </div>
+        <div class="section-body glass-panel">
+            <p>
+                Dia Moni is an aspiring AI/ML Engineer and Python Developer studying Computer Science
+                and Engineering. Her work is shaped by a strong interest in intelligent systems,
+                backend development, automation, and software that solves real-world problems clearly.
+            </p>
+            <p>
+                She is developing a foundation across machine learning fundamentals, REST API design,
+                database concepts, data analysis, and algorithmic thinking. Her portfolio highlights
+                a growth mindset, technical initiative, and an interest in scalable and reliable systems.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="education">
+    <div class="container">
+        <div class="section-heading">
+            <p class="section-label">Education</p>
+            <h2>Academic Foundation</h2>
+        </div>
+        <div class="timeline-list">
+            {% for item in education %}
+                <article class="timeline-card glass-card">
+                    <div>
+                        <p class="card-kicker">{{ item.period }}</p>
+                        <h3>{{ item.institution }}</h3>
+                        <p>{{ item.location }}</p>
+                    </div>
+                    <p>{{ item.description }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section" id="skills">
+    <div class="container">
+        <div class="section-heading wide-heading">
+            <p class="section-label">Skills</p>
+            <h2>Technical stack and working strengths</h2>
+            <p>Grouped from the CV into practical areas for AI/ML, backend development, core CS, tools, security, and collaboration.</p>
+        </div>
+        <div class="skills-grid">
+            {% for group in skill_groups %}
+                <article class="skill-card glass-card">
+                    <h3>{{ group.title }}</h3>
+                    <div class="chip-list">
+                        {% for skill in group.skills %}
+                            <span>{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section" id="projects">
+    <div class="container">
+        <div class="section-heading wide-heading">
+            <p class="section-label">Projects</p>
+            <h2>Featured project work</h2>
+            <p>Selected CV projects presented around backend engineering, structured systems, and AI/data analysis interests.</p>
+        </div>
+        <div class="projects-grid">
+            {% for project in projects %}
+                <article class="project-card glass-card">
+                    <div class="project-topline">
+                        <p class="card-kicker">{{ project.type }}</p>
+                        <span>{{ loop.index }}</span>
+                    </div>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <ul class="feature-list">
+                        {% for feature in project.features %}
+                            <li>{{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="stack-list">
+                        {% for tech in project.stack %}
+                            <span>{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section" id="leadership">
+    <div class="container split-section">
+        <div>
+            <p class="section-label">Leadership</p>
+            <h2>Community involvement and technical initiative</h2>
+        </div>
+        <div class="stacked-cards">
+            {% for item in experience %}
+                <article class="glass-card leadership-card">
+                    <p class="card-kicker">{{ item.period }}</p>
+                    <h3>{{ item.organization }}</h3>
+                    <p class="role-line">{{ item.role }}</p>
+                    <p>{{ item.description }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section" id="achievements">
+    <div class="container">
+        <div class="section-heading">
+            <p class="section-label">Achievements</p>
+            <h2>Competitions and recognition</h2>
+        </div>
+        <div class="achievement-grid">
+            {% for achievement in achievements %}
+                <article class="achievement-card glass-card">
+                    <span class="achievement-number">0{{ loop.index }}</span>
+                    <h3>{{ achievement.title }}</h3>
+                    <p>{{ achievement.detail }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section" id="certificates">
+    <div class="container">
+        <div class="section-heading">
+            <p class="section-label">Certificates</p>
+            <h2>Continuous learning</h2>
+        </div>
+        <div class="certificate-row">
+            {% for certificate in certificates %}
+                <article class="certificate-card glass-card">
+                    <span>Certificate</span>
+                    <h3>{{ certificate }}</h3>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section contact-section" id="contact">
+    <div class="container contact-grid">
+        <div>
+            <p class="section-label">Contact</p>
+            <h2>Open to collaboration in AI/ML, backend development, and impactful tech projects.</h2>
+            <p>
+                Dia is interested in project collaboration, student tech initiatives, and opportunities
+                to build practical systems that combine automation, analysis, and dependable software.
+            </p>
+        </div>
+        <div class="contact-card glass-panel">
+            <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+            <a href="{{ profile.linkedin }}" target="_blank" rel="noopener">linkedin.com/in/dia-moni</a>
+            <a href="{{ profile.github }}" target="_blank" rel="noopener">github.com/diamoni96</a>
+            <a class="button button-primary full-button" href="{{ url_for('download_cv') }}">Download CV</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
